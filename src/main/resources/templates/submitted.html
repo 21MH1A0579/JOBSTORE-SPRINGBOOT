@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Status</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: green;
+      text-transform: uppercase;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 >Application Submitted Successfully   <span th:text="${app.user_name}"></span></h1>
+
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Application ID</td>
+      <td th:text="${app.id}">JobApp_2</td>
+    </tr>
+    <tr>
+      <td>Job ID</td>
+      <td th:text="${app.job_id}">Post_8</td>
+    </tr>
+    <tr>
+      <td>User ID</td>
+      <td th:text="${app.user_id}">User_2</td>
+    </tr>
+    <tr>
+      <td>User Email</td>
+      <td th:text="${app.user_email}">chaithu@gmail.com</td>
+    </tr>
+    <tr>
+      <td>X Percentage</td>
+      <td th:text="${app.x_percent}">97</td>
+    </tr>
+    <tr>
+      <td>XII Percentage</td>
+      <td th:text="${app.xii_percent}">91</td>
+    </tr>
+    <tr>
+      <td>UG Percentage</td>
+      <td th:text="${app.ug_percent}">70</td>
+    </tr>
+    <tr>
+      <td>Selected Skills</td>
+      <td th:text="${app.selected_skills}">Python, NumPy, Pandas</td>
+    </tr>
+    <tr>
+      <td>Final Score</td>
+      <td th:text="${app.final_score}">80</td>
+    </tr>
+  </table>
+
+</body>
+</html>

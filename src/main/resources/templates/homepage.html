@@ -1,0 +1,150 @@
+
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User DashBoard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #2c3e50;
+        }
+
+        .profile-container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .profile-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #27ae60; /* Green color */
+        }
+
+        .profile-container p {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #34495e;
+        }
+
+        .profile-container .label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .profile-container a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .action-buttons button {
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .action-buttons button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Animation effects for buttons */
+        .action-buttons button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 5px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.5));
+            animation: border-light 3s infinite linear;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .action-buttons button:hover::before {
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), transparent, rgba(255, 255, 255, 0.8));
+        }
+
+        .action-buttons button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes border-light {
+            0% {
+                transform: translate(-100%, -100%);
+            }
+            100% {
+                transform: translate(100%, 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <!-- User Avatar -->
+        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User Avatar">
+        
+        <!-- Welcome Text with User's Name in Green -->
+        <h3>Welcome, <span th:text="${userData.name}">Jimmy Turner</span></h3>
+        
+        <!-- User Details -->
+        <p>
+            <span class="label">Email:</span> 
+            <a th:href="'mailto:' + ${userData.email}" th:text="${userData.email}">Jimmy@gmail.com</a>
+        </p>
+        <p>
+            <span class="label">Phone:</span> 
+            <span th:text="${userData.phone}">+1 (530) 555-1212</span>
+        </p>
+        <p>
+            <span class="label">Role:</span> 
+            <span th:text="${userData.role}">ROLE_USER</span>
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="/logout">
+                <button>LOGOUT</button>
+            </a>
+            <a th:href="${userData.role == 'ROLE_USER' ? '/jobs/view/all' : '/jobs/manage/all'}">
+                <button>
+                    <span th:text="${userData.role == 'ROLE_USER' ? 'APPLY FOR JOB' : 'VIEW JOBS'}">VIEW JOBS</span>
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+  
